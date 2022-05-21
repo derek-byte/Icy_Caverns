@@ -7,6 +7,20 @@
     <link href="{{ url_for('static',filename='styles.css') }}" rel="stylesheet" type="text/css" />
     <title>Icy Caverns</title>
 </head>
+<style>
+    #title {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 25em;
+        height: 8em;
+    }
+    #game {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 <body>
     <img id="title" src="{{url_for('static', filename='images/title.png')}}" alt="Title">
     <img id="game" src="{{ url_for('video_feed') }}" alt="Game">

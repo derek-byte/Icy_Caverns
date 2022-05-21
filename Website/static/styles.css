@@ -1,8 +1,10 @@
 body {
-    background-image: url('/static/images/ice.jpg');
+    background-image: url('/images/ice.jpg');
     background-size: cover;
     margin: 0;
+    background-color: blue;
 }
 
-img {
+#title {
+    text-align: center;
 }
