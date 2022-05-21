@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="{{url_for('static', filename='images/title.png')}}">
     <link href="{{ url_for('static',filename='styles.css') }}" rel="stylesheet" type="text/css" />
     <title>Icy Caverns</title>
 </head>
@@ -132,30 +133,87 @@
         margin-left: 1em;
         margin-top: 1em;
         flex-direction: column;
-        height: 73vh;
-        background-image: url("{{ url_for('static',filename='images/snow.webp') }}");
-        background-repeat: no-repeat;
-        background-size: cover;
-        filter: brightness(120%);
     }
 
     h2 {
         color: aliceblue;
     }
+
+    .speech {
+        position: relative;
+        font-size: 18px;
+        line-height: 24px;
+        background: rgb(125, 150, 235);
+        border-radius: 10px;
+        padding: 24px;
+        text-align: center;
+        color: #000;
+        margin-right: 4em;
+        margin-left: 1em;
+        margin-top: 1em;
+        padding: 1.5em;
+        box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
+    }
+
+    .speech-bottom-left:before {
+        content: "";
+        width: 0px;
+        height: 0px;
+        position: absolute;
+        border-left: 24px solid rgb(125, 150, 235);
+        border-right: 12px solid transparent;
+        border-top: 12px solid rgb(125, 150, 235);
+        border-bottom: 20px solid transparent;
+        left: 32px;
+        bottom: -24px;
+    }
+
+    .iceicle {
+        position: absolute;
+    }
+
+    #iceicle {
+        top: 5.5em;
+        left: 90rem;
+    }
+
+    #iceicle1 {
+        top: 5.5em;
+        left: 115rem;
+    }
+
+    #iceicle2 {
+        top: 5.5em;
+        left: 0rem;
+    }
+
+    #iceicle3 {
+        top: 29.25rem;
+        left: 106rem;
+    }
+
+
 </style>
 <body>
+    <img id="iceicle" class="iceicle" src="{{url_for('static', filename='images/iceicle.png')}}" alt="iceicle">
+    <img id="iceicle1" class="iceicle" src="{{url_for('static', filename='images/iceicle.png')}}" alt="iceicle">
+    <img id="iceicle2" class="iceicle" src="{{url_for('static', filename='images/iceicle.png')}}" alt="iceicle">
+    <img id="iceicle3" class="iceicle" src="{{url_for('static', filename='images/iceicle.png')}}" alt="iceicle">
     <nav>
         <img id="title" src="{{url_for('static', filename='images/title.png')}}" alt="Title">
     </nav>
     <div id="screen">
         <img id="game" src="{{ url_for('video_feed') }}" alt="Game">
-    
+        <div>
         <div id="inputs">
             <h2>Challenge a person to beat your score:</h2>
             <div>
                 <input id="emailInput" placeholder="Enter Email..."/>
                 <button id="emailButton">Send</button>
             </div>
+        </div>
+        <h2 class="speech speech-bottom-left">Dodge the iceicles to survive!</h2>
+        <img src="{{url_for('static', filename='images/miner1.png')}}" alt="miner">
         </div>
     </div>
 
