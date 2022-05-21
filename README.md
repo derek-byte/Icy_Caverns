@@ -1,5 +1,5 @@
 # JAMHacks Icy Caverns 
-<img align="center" src="./Website/Resources/static/images/gameplay.png" width="100%" height="25%">
+<img align="center" src="./Website/static/images/gameplay.png" width="100%" height="25%">
 
 Icy Caverns utilizes computer vision to create a fun game where you have to last as long as you without being hit by a icicle. Remember, the amount of icicles increase by 2 ever 3 seconds! This game was created using Flask, OpenCV, and Sendgrid. 
 
