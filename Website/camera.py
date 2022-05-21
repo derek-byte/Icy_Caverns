@@ -93,7 +93,7 @@ class VideoCamera(object):
 
         if self.check_over:
             self.img = cv2.addWeighted(self.game_over_resized, 0.8, self.background_resized, 0.2, 0.0)
-            cv2.putText(self.img, str(seconds).zfill(2), (540, 460), cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255, 255, 255), 5)
+            cv2.putText(self.img, str(self.seconds).zfill(2), (540, 460), cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255, 255, 255), 5)
 
             cv2.putText(self.img, "Icy Caverns", (400, 75), cv2.FONT_HERSHEY_SIMPLEX, 2.75, (375, 255, 0), 9)
 
@@ -114,19 +114,19 @@ class VideoCamera(object):
             # Check the time
             t1 = time.time()
             total = t1-self.t0
-            seconds = int(total)
+            self.seconds = int(total)
 
-            cv2.putText(self.img, "Time: "+str(seconds), (1100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+            cv2.putText(self.img, "Time: "+str(self.seconds), (1100, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
             cv2.putText(self.img, "Press [r] to restart", (1025, 700), cv2.FONT_HERSHEY_SIMPLEX, 0.75, (255, 255, 255), 2)
             cv2.putText(self.img, "Note: Number of ice shards increased by 2 every 5 seconds", (22, 713), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
 
             # Increase amount of iceicles
-            if seconds%5 == 0 and self.increasing_timer == 0:
+            if self.seconds%5 == 0 and self.increasing_timer == 0:
                 self.increasing_timer += 1
                 print("Increased timer plus 1")
 
             increasing_amount = 2
-            if seconds%5 != 0 and self.increasing_timer == 1:
+            if self.seconds%5 != 0 and self.increasing_timer == 1:
                 self.num_shards += increasing_amount
                 self.increasing_timer = 0
                 print("Increased shards by 3")

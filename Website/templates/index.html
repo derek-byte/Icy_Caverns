@@ -8,6 +8,10 @@
     <title>Icy Caverns</title>
 </head>
 <style>
+    body {
+        background-color: rgb(113, 112, 116);
+    }
+
     #title {
         display: block;
         margin-left: auto;
@@ -19,10 +23,72 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+        padding-top: 1vh;
+    }
+
+    nav {
+        background-color: rgb(43, 41, 41);
+        box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
+        padding-bottom: 1em;
+    }
+
+    #emailInput {
+        border: none;
+        color: grey;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        box-shadow: 5px 6px #888888;
+    }
+
+    #emailButton {
+        border: none;
+        color:white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        background: #2c3e50;
+        box-shadow: 5px 6px #888888;
+    }
+
+    #hangupButton {
+        border: none;
+        color:white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        background: #e6491a;
+        box-shadow: 5px 6px #888888;
+    }
+
+    #inputs {
+        width: 50%;
+        margin: 0 32.5%;
     }
 </style>
 <body>
-    <img id="title" src="{{url_for('static', filename='images/title.png')}}" alt="Title">
+    <nav>
+        <img id="title" src="{{url_for('static', filename='images/title.png')}}" alt="Title">
+    </nav>
     <img id="game" src="{{ url_for('video_feed') }}" alt="Game">
+    <div id="inputs">
+        <input id="emailInput" placeholder="Enter Email..."/>
+        <button id="emailButton">Send</button>
+        <form action="/">
+            <button id="hangupButton">Restart</button>
+        </form>
+    </div>
 </body>
 </html>
