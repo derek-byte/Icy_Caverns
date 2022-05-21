@@ -1,11 +1,31 @@
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, Response, request
 from camera import VideoCamera
+import sendgrid
+import os
+from sendgrid.helpers.mail import *
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST', 'GET'])
 def index():
-    return render_template('index.html')
+    if request.method == 'POST':
+
+        email = request.form['emailInput']
+
+        sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+        from_email = Email("derek55003@gmail.com")
+        to_email = To(email)
+        subject = "Someone Has Reached The Icy Caverns"
+        content = Content("text/plain", "Someone has challenged you to a game of Icy Caverns! Click the link below to play!")
+        mail = Mail(from_email, to_email, subject, content)
+        response = sg.client.mail.send.post(request_body=mail.get())
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+
+        return render_template('index.html', confirmation="Email Sent to: "+email)
+    else:
+        return render_template('index.html')
 
 def gen(camera):
     while True:

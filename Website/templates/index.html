@@ -188,8 +188,22 @@
     }
 
     #iceicle3 {
-        top: 29.25rem;
-        left: 106rem;
+        top: 51.5rem;
+        left: 69rem;
+    }
+
+    .confirmation {
+        position: relative;
+        font-size: 18px;
+        background: rgb(111, 238, 143);
+        border-radius: 10px;
+        padding: 24px;
+        text-align: center;
+        margin-right: 4em;
+        margin-left: 1em;
+        margin-top: 1em;
+        padding: 1.5em;
+        box-shadow: 2px 2px 12px rgba(0,0,0,0.2);
     }
 
 
@@ -205,13 +219,14 @@
     <div id="screen">
         <img id="game" src="{{ url_for('video_feed') }}" alt="Game">
         <div>
-        <div id="inputs">
+        <form id="inputs" action="#" method="post">
             <h2>Challenge a person to beat your score:</h2>
             <div>
-                <input id="emailInput" placeholder="Enter Email..."/>
+                <input name="emailInput" id="emailInput" placeholder="Enter Email..."/>
                 <button id="emailButton">Send</button>
             </div>
-        </div>
+        </form>
+        <h2 class="confirmation">{{confirmation}}</h2>
         <h2 class="speech speech-bottom-left">Dodge the iceicles to survive!</h2>
         <img src="{{url_for('static', filename='images/miner1.png')}}" alt="miner">
         </div>
