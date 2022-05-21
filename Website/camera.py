@@ -16,6 +16,7 @@ class VideoCamera(object):
     def __init__(self):
         self.detector = HandDetector(detectionCon=0.8, maxHands=1)
 
+        self.seconds = 0
         self.num_shards = 3
 
         for num in range(1, self.num_shards):
@@ -123,17 +124,14 @@ class VideoCamera(object):
             # Increase amount of iceicles
             if self.seconds%5 == 0 and self.increasing_timer == 0:
                 self.increasing_timer += 1
-                print("Increased timer plus 1")
 
             increasing_amount = 2
             if self.seconds%5 != 0 and self.increasing_timer == 1:
                 self.num_shards += increasing_amount
                 self.increasing_timer = 0
-                print("Increased shards by 3")
 
                 # Creating the added iceicles
                 for num in range(self.num_shards-increasing_amount, self.num_shards):
-                    print(num)
                     x_ice = randint(100, 1140-48)
                     y_ice = randint(10, 40)
                     exec(f'self.iceiclePos{num} = [{x_ice}, {y_ice}]')
