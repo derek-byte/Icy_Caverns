@@ -7,14 +7,12 @@ Icy Caverns utilizes computer vision to create a fun game where you have to last
 - Install Flask
 ```
 pip install flask
-
 ```
 - Install OpenCV
 ```
 pip install opencv
 pip install cvzone 
 pip install mediapipe
-
 ```
 - Install Sendgrid
 ```
