@@ -1,8 +1,8 @@
 from flask import Flask, render_template, Response, request
 from camera import VideoCamera
-import sendgrid
 import os
-from sendgrid.helpers.mail import *
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
 app = Flask(__name__)
 
@@ -12,16 +12,19 @@ def index():
 
         email = request.form['emailInput']
 
-        sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
-        from_email = Email("derek55003@gmail.com")
-        to_email = To(email)
-        subject = "Someone Has Reached The Icy Caverns"
-        content = Content("text/plain", "Someone has challenged you to a game of Icy Caverns! Click the link below to play!")
-        mail = Mail(from_email, to_email, subject, content)
-        response = sg.client.mail.send.post(request_body=mail.get())
-        print(response.status_code)
-        print(response.body)
-        print(response.headers)
+        message = Mail(from_email='derek55003@gmail.com',
+                        to_emails=email,
+                        subject='Icy Caverns',
+                        plain_text_content='Someone has challenged you to a game of Icy Caverns! Click the link below to play!',
+                        html_content='<strong>Someone has challenged you to a game of Icy Caverns! Click the link below to play!</strong>')
+        try:
+            sg = SendGridAPIClient(os.environ('SENDGRID_API_KEY'))
+            response = sg.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+        except Exception as e:
+            print(e.message)
 
         return render_template('index.html', confirmation="Email Sent to: "+email)
     else:
