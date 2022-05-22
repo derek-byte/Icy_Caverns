@@ -7,7 +7,6 @@ Icy Caverns utilizes computer vision to create a fun game where a miner follows 
 - Install Flask
 ```
 pip install flask
-pip install -U Flask-SQLAlchemy
 ```
 - Install OpenCV
 ```
