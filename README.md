@@ -1,5 +1,5 @@
 # JAMHacks Icy Caverns 
-<img align="center" src="./Website/static/images/gameplay.png" width="100%" height="25%">
+<img align="center" src="./Website/static/images/gameplay1.png" width="100%" height="25%">
 
 Icy Caverns utilizes computer vision to create a fun game where a miner follows your hand! You have to last as long as you can without being hit by a icicle. Remember, the amount of icicles increase by 2 ever 3 seconds! This game was created using Flask, OpenCV, and Sendgrid. 
 
@@ -7,6 +7,7 @@ Icy Caverns utilizes computer vision to create a fun game where a miner follows 
 - Install Flask
 ```
 pip install flask
+pip install -U Flask-SQLAlchemy
 ```
 - Install OpenCV
 ```

@@ -10,24 +10,24 @@ app = Flask(__name__)
 @app.route('/', methods=['POST', 'GET'])
 def index():
     if request.method == 'POST':
-            
+        top_score = 107
         email = request.form['emailInput']
 
-        # message = Mail(from_email='derek55003@gmail.com',
-        #                 to_emails=email,
-        #                 subject='Icy Caverns',
-        #                 plain_text_content='Someone has challenged you to a game of Icy Caverns! Click the link below to play!',
-        #                 html_content='<strong>Someone has challenged you to a game of Icy Caverns! Click the link below to play!</strong>')
-        # try:
-        #     sg = SendGridAPIClient(os.environ('SENDGRID_API_KEY'))
-        #     response = sg.send(message)
-        #     print(response.status_code)
-        #     print(response.body)
-        #     print(response.headers)
-        # except Exception as e:
-        #     print(e.message)
+        message = Mail(from_email='derek55003@gmail.com',
+                        to_emails=email,
+                        subject='Icy Caverns',
+                        plain_text_content='Someone has challenged you to a game of Icy Caverns! Click the link below to play! The score to beat is 107.',
+                        html_content='<strong>Someone has challenged you to a game of Icy Caverns! Click the link below to play! The score to beat it 107</strong>')
+        try:
+            sg = SendGridAPIClient(os.environ('SENDGRID_API_KEY'))
+            response = sg.send(message)
+            print(response.status_code)
+            print(response.body)
+            print(response.headers)
+        except Exception as e:
+            print(e.message)
 
-        return render_template('index.html', confirmation="Email Sent to: "+email)
+        return render_template('index.html')
     else:
         return render_template('index.html')
 

@@ -16,7 +16,6 @@ class VideoCamera(object):
     def __init__(self):
         self.detector = HandDetector(detectionCon=0.8, maxHands=1)
 
-        self.seconds = 0
         self.num_shards = 3
 
         for num in range(1, self.num_shards):
@@ -93,6 +92,7 @@ class VideoCamera(object):
                 pass
 
         if self.check_over:
+
             self.img = cv2.addWeighted(self.game_over_resized, 0.8, self.background_resized, 0.2, 0.0)
             cv2.putText(self.img, str(self.seconds).zfill(2), (540, 460), cv2.FONT_HERSHEY_SIMPLEX, 2.5, (255, 255, 255), 5)
 
